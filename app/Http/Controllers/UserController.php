@@ -24,17 +24,16 @@ class UserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'role_id'  => ['required','string']
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role_id'=> $request->role_id,
+            'role'=> $request->role,
         ]);
 
-        return redirect('users');
+        return redirect()->back();
 
         
     }

@@ -29,8 +29,9 @@ class PageController extends Controller
 
 
     public function blog()
-    {
-       return view('front.blog');
+    { 
+      $posts= Post::all();
+       return view('front.blog', compact('posts'));
     }
 
     public function guestblog()

@@ -11,7 +11,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Create User</p>
 
                                     <form action="{{route('storeuser')}}" method="POST" class="mx-1 mx-md-4">
                                         @csrf
@@ -51,7 +51,7 @@
                                             </div>
                                         </div>
 
-                                        <select name="role_id" type="text" id="role_id" class="form-select" aria-label="Default select example">
+                                        <select name="role" type="text" id="role" class="form-select" aria-label="Default select example">
                                             <option selected>Select Role</option>
 
                                             @foreach ($roles as $role)
@@ -60,13 +60,7 @@
 
                                           </select>
 
-                                        <div class="form-check d-flex justify-content-center mb-5">
-                                            <input class="form-check-input me-2" type="checkbox" value=""
-                                                id="form2Example3c" />
-                                            <label class="form-check-label" for="form2Example3">
-                                                I agree all statements in <a href="#!">Terms of service</a>
-                                            </label>
-                                        </div>
+                                      
 
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                             <button type="submit" class="btn btn-primary btn-lg">Create-New-User</button>

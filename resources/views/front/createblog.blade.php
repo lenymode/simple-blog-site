@@ -46,7 +46,7 @@
                                 </div>
 
                                 <hr class="mx-n3">
-                                <div class="row align-items-center py-3">
+                                {{-- <div class="row align-items-center py-3">
                                     <div class="col-md-3 ps-5">
                                         <h6 class="mb-0"></h6>
                                     </div>
@@ -54,7 +54,7 @@
                                         <label for="img">Select image:</label>
                                         <input name="image" type="file" id="image" name="image" accept="image/*">
                                     </div>
-                                </div>
+                                </div> --}}
                                 <hr class="mx-n3">
                                 <div class="px-5 py-4">
                                     <button type="submit" class="btn btn-primary btn-lg">Create Blog</button>

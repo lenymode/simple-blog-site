@@ -20,24 +20,28 @@
                 <div class="post-preview">
 
 
-                    @foreach ($posts as $post)
-                        @if (Auth::check())
+
+                    @if (Auth::check())
+                        @foreach ($posts as $post)
                             <a href="{{ route('blog') }}">
                                 <h2 class="post-title">{{ $post->name }}</h2>
                                 <h3 class="post-subtitle">{{ $post->short }}</h3>
                             </a>
-                        @else
+                        @endforeach
+                    @else
+                        @foreach ($posts as $post)
                             <a href="{{ route('guestblog') }}">
                                 <h2 class="post-title">{{ $post->name }}</h2>
                                 <h3 class="post-subtitle">{{ $post->short }}</h3>
                             </a>
-                        @endif
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Mr.Kasem</a>
-                            on September 24, 2022
-                        </p>
-                    @endforeach
+                        @endforeach
+                    @endif
+                    <p class="post-meta">
+                        Posted by
+                        <a href="#!">Mr.Kasem</a>
+                        on September 24, 2022
+                    </p>
+
 
                     <form action="" method="">
                         @csrf

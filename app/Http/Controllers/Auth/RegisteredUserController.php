@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use App\Models\Role;
 
 class RegisteredUserController extends Controller
 {
@@ -19,9 +20,12 @@ class RegisteredUserController extends Controller
      * @return \Illuminate\View\View
      */
     public function create()
-    {
-        return view('auth.register');
+    {   
+        $roles=Role::all();
+        return view('auth.register',compact('roles'));
     }
+
+    
 
     /**
      * Handle an incoming registration request.
@@ -32,6 +36,27 @@ class RegisteredUserController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'role_id' => 'required'
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role_id'=> $request->role_id,
+        ]);
+        return redirect('users');
+    }
+
+
+    
+
+    public function storenew(Request $request)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -51,7 +76,7 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect('/');
+        
     }
-
     
 }

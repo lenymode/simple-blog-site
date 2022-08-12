@@ -27,7 +27,7 @@ use App\Http\Controllers\UserController;
 //     return view('front.index');
 // })->middleware(['auth'])->name('/');
 
-require __DIR__.'/auth.php';
+
 
 
 // blade-front-end 
@@ -49,5 +49,5 @@ Route::group(["middleware" => ["auth"]], function(){
     Route::post('/storeuser', [UserController::class,'store'])->name('storeuser');
     
  });
-
+ require __DIR__.'/auth.php';
  

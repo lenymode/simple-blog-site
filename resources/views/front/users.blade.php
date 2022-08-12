@@ -5,7 +5,7 @@
 
     <div class="container w-50 ">
         <div class="py-10 auto">
-            <a href="{{route('createuser')}}">
+            <a href="{{ route('register') }}">
                 <button type="sunmit" class="btn btn-outline-primary">Create-New-User</button>
             </a>
 

@@ -8,7 +8,7 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
-    public function index()
+    public function postindex()
     {
         $posts = Post::all();
         return view('front.index',compact('posts'));
@@ -29,7 +29,7 @@ class PostController extends Controller
             'name' => 'required',
             'short' => 'required',
             'text'  => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $user = Post::create([
@@ -39,10 +39,10 @@ class PostController extends Controller
             
         ]);
         
-        $imageName = time().'.'.$request->image->extension();  
-        $request->image->move(public_path('images'), $imageName);
+        // $imageName = time().'.'.$request->image->extension();  
+        // $request->image->move(public_path('images'), $imageName);
 
-        Auth::check();
+        // Auth::check();
         return redirect()->route('/')->with('success','Post created successfully.');
     }
 

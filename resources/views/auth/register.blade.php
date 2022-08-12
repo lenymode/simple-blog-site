@@ -9,51 +9,120 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+        @if (Auth::check())
+            @can('isAdmin')
 
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
+                <form method="POST" action="{{ route('register') }}">
+                    @csrf
+                    <!-- Name -->
+                    <div>
+                        <x-label for="name" :value="__('Name')" />
 
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
+                        <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')"
+                            required autofocus />
+                    </div>
 
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
+                    <!-- Email Address -->
+                    <div class="mt-4">
+                        <x-label for="email" :value="__('Email')" />
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
+                        <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
+                            required />
+                    </div>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+                    <!-- Password -->
+                    <div class="mt-4">
+                        <x-label for="password" :value="__('Password')" />
 
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
+                        <x-input id="password" class="block mt-1 w-full" type="password" name="password" required
+                            autocomplete="new-password" />
+                    </div>
 
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
+                    <!-- Confirm Password -->
+                    <div class="mt-4">
+                        <x-label for="password_confirmation" :value="__('Confirm Password')" />
 
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
+                        <x-input id="password_confirmation" class="block mt-1 w-full" type="password"
+                            name="password_confirmation" required />
+                    </div>
+                    @can('isAdmin')
+                        <select name="role_id" type="text" id="role_id" class="form-select"
+                            aria-label="Default select example">
+                            <option selected>Select Role</option>
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
+                            @foreach ($roles as $role)
+                                <option value="{{ $role->id }}">{{ $role->role }}</option>
+                            @endforeach
 
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
-            </div>
-        </form>
+                        </select>
+                    @endcan
+
+
+                    <div class="flex items-center justify-end mt-4">
+                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                            {{ __('Already registered?') }}
+                        </a>
+
+                        <x-button class="ml-4">
+                            {{ __('Register') }}
+                        </x-button>
+                    </div>
+                </form>
+
+            @endcan
+        @endif
+            <form method="POST" action="{{ route('registernew') }}">
+                @csrf
+
+                <!-- Name -->
+                <div>
+                    <x-label for="name" :value="__('Name')" />
+
+                    <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')"
+                        required autofocus />
+                </div>
+
+                <!-- Email Address -->
+                <div class="mt-4">
+                    <x-label for="email" :value="__('Email')" />
+
+                    <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
+                        required />
+                </div>
+
+                <!-- Password -->
+                <div class="mt-4">
+                    <x-label for="password" :value="__('Password')" />
+
+                    <x-input id="password" class="block mt-1 w-full" type="password" name="password" required
+                        autocomplete="new-password" />
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="mt-4">
+                    <x-label for="password_confirmation" :value="__('Confirm Password')" />
+
+                    <x-input id="password_confirmation" class="block mt-1 w-full" type="password"
+                        name="password_confirmation" required autocomplete="new-password"/>
+                </div>
+                {{-- @can('isAdmin')
+                <div>
+                    <input name="role_id" id="role_id" type="text" :value="{{__('user')}}">
+                </div>
+                @endcan --}}
+
+
+                <div class="flex items-center justify-end mt-4">
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                        {{ __('Already registered?') }}
+                    </a>
+
+                    <x-button class="ml-4">
+                        {{ __('Register') }}
+                    </x-button>
+                </div>
+            </form>
+            
+        
     </x-auth-card>
 </x-guest-layout>
