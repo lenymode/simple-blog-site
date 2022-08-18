@@ -70,7 +70,7 @@
                 </form>
 
             @endcan
-        @endif
+        @else
             <form method="POST" action="{{ route('registernew') }}">
                 @csrf
 
@@ -103,7 +103,7 @@
                     <x-label for="password_confirmation" :value="__('Confirm Password')" />
 
                     <x-input id="password_confirmation" class="block mt-1 w-full" type="password"
-                        name="password_confirmation" required autocomplete="new-password"/>
+                        name="password_confirmation" required autocomplete="new-password" />
                 </div>
                 {{-- @can('isAdmin')
                 <div>
@@ -122,7 +122,8 @@
                     </x-button>
                 </div>
             </form>
-            
-        
+        @endif
+
+
     </x-auth-card>
 </x-guest-layout>

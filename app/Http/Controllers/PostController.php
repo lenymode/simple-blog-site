@@ -14,6 +14,8 @@ class PostController extends Controller
         return view('front.index',compact('posts'));
     }
 
+    
+
 
 
     public function create()

@@ -31,15 +31,16 @@ use App\Http\Controllers\UserController;
 
 
 // blade-front-end 
-Route::get('/', [PageController::class,'index']);
-Route::get('/', [PageController::class,'index'])->middleware(['auth'])->name('/');
-Route::get('/about',[PageController::class,'about'])->name('about');
-Route::get('/contact',[PageController::class,'contact'])->name('contact');
-Route::get('/guestblog',[PageController::class,'guestblog'])->name('guestblog');
+    Route::get('/', [PageController::class,'index']);
+    Route::get('/', [PageController::class,'index'])->middleware(['auth'])->name('/');
+    Route::get('/about',[PageController::class,'about'])->name('about');
+    Route::get('/contact',[PageController::class,'contact'])->name('contact');
+    Route::get('/blog/{id}',[PageController::class,'blog'])->name('blog');
+
 
 Route::group(["middleware" => ["auth"]], function(){
     // page-controller-routes
-    Route::get('/blog',[PageController::class,'blog'])->name('blog');
+   
     Route::get('/users', [PageController::class,'users'])->name('users');
     // post-controller-routes 
     Route::get('/createblog', [PostController::class,'create'])->name('createblog');

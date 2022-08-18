@@ -21,39 +21,22 @@
 
 
 
-                    @if (Auth::check())
-                        @foreach ($posts as $post)
-                            <a href="{{ route('blog') }}">
-                                <h2 class="post-title">{{ $post->name }}</h2>
-                                <h3 class="post-subtitle">{{ $post->short }}</h3>
-                            </a>
-                        @endforeach
-                    @else
-                        @foreach ($posts as $post)
-                            <a href="{{ route('guestblog') }}">
-                                <h2 class="post-title">{{ $post->name }}</h2>
-                                <h3 class="post-subtitle">{{ $post->short }}</h3>
-                            </a>
-                        @endforeach
-                    @endif
-                    <p class="post-meta">
-                        Posted by
-                        <a href="#!">Mr.Kasem</a>
-                        on September 24, 2022
-                    </p>
+                    @foreach ($posts as $post)
+                        <a href="{{ route('blog', $post->id) }}">
+                            <h2 class="post-title">{{ $post->name }}</h2>
+                            <h3 class="post-subtitle">{{ $post->short }}</h3>
+                        </a>
 
 
-                    <form action="" method="">
-                        @csrf
-                        <div class="form-outline w-100">
-                            <textarea class="form-control" id="textAreaExample" rows="4" style="background: #fff;"></textarea>
-                            <label class="form-label" for="textAreaExample">Comment</label>
-                        </div>
-                </div>
-                <div class="float-end mt-2 pt-1">
-                    <button type="button" class="btn btn-primary btn-sm">Post comment</button>
-                    <button type="button" class="btn btn-outline-primary btn-sm">Cancel</button>
-                </div>
+                        <p class="post-meta">
+                            Posted by
+                            <a href="#!">Mr.Kasem</a>
+                            on September 24, 2022
+                        </p>
+                    @endforeach
+
+
+                    
                 </form>
             </div>
             <!-- Divider-->

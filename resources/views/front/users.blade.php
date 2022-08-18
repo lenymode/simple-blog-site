@@ -17,6 +17,7 @@
                 <tr>
                     <th>Firstname</th>
                     <th>Email</th>
+                    <th>Role</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -25,6 +26,7 @@
                     <tr>
                         <td class="h6">{{ $user->name }}</td>
                         <td class="bg-purple-600">{{ $user->email }}</td>
+                        <td class="bg-purple-600">{{ $user->role->role }}</td>
                         <td class="small-auto">
                             <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
                             <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>

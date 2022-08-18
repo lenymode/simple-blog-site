@@ -27,18 +27,14 @@ class PageController extends Controller
        return view('front.contact');
     }
 
-
-    public function blog()
+ 
+    public function blog($id)
     { 
-      $posts= Post::all();
+      $posts= Post::findOrFail($id);
        return view('front.blog', compact('posts'));
     }
 
-    public function guestblog()
-    {
-       return view('front.guestblog');
-    }
-
+   
    //  userlist 
     public function users()
     { 
