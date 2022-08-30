@@ -9,10 +9,9 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        @if (Auth::check())
-            @can('isAdmin')
-
-                <form method="POST" action="{{ route('register') }}">
+        @auth
+            
+                <form method="POST" action="{{ route('registernew') }}">
                     @csrf
                     <!-- Name -->
                     <div>
@@ -45,7 +44,7 @@
                         <x-input id="password_confirmation" class="block mt-1 w-full" type="password"
                             name="password_confirmation" required />
                     </div>
-                    @can('isAdmin')
+                   
                         <select name="role_id" type="text" id="role_id" class="form-select"
                             aria-label="Default select example">
                             <option selected>Select Role</option>
@@ -55,7 +54,7 @@
                             @endforeach
 
                         </select>
-                    @endcan
+                   
 
 
                     <div class="flex items-center justify-end mt-4">
@@ -68,9 +67,10 @@
                         </x-button>
                     </div>
                 </form>
+                @endauth
 
-            @endcan
-        @else
+                
+                    @guest
             <form method="POST" action="{{ route('registernew') }}">
                 @csrf
 
@@ -122,7 +122,8 @@
                     </x-button>
                 </div>
             </form>
-        @endif
+            @endguest
+      
 
 
     </x-auth-card>

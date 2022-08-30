@@ -27,7 +27,7 @@
                                     src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar"
                                     width="60" height="60" />
                                 <div>
-                                    <h6 class="fw-bold text-primary mb-1">Name</h6>
+                                    {{-- <h6 class="fw-bold text-primary mb-1">{{auth()->user()->name}}</h6> --}}
                                     <p class="text-muted small mb-0">
                                         Shared publicly - Jan 2020
                                     </p>
@@ -61,7 +61,7 @@
                                 <img class="rounded-circle shadow-1-strong me-3"
                                     src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar"
                                     width="40" height="40" />
-                                @if (Auth::check())
+                                @auth
                                     <div class="form-outline w-100">
                                         <textarea class="form-control" placeholder="You are logged in!" id="textAreaExample" rows="4"
                                             style="background: #fff;"></textarea>
@@ -73,10 +73,10 @@
                                             style="background: #fff;"></textarea>
                                         <label class="form-label" for="textAreaExample">Comment</label>
                                     </div>
-                                @endif
+                                @endauth
                             </div>
 
-                            @if (Auth::check())
+                            @auth
                                 <div class="float-end mt-2 pt-1">
                                     
                                     <button type="button" class="btn btn-primary btn-sm">Post comment</button>
@@ -89,7 +89,7 @@
                                     <button type="button" class="btn btn-outline-primary btn-sm">Cancel</button>
                                 </div>
                             </a>
-                            @endif
+                            @endauth
 
 
                         </div>

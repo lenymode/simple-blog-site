@@ -9,6 +9,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,7 @@ Route::group(["middleware" => ["auth"]], function(){
     // user-controller-routes
     Route::get('/createuser', [UserController::class,'createuser'])->name('createuser');
     Route::post('/storeuser', [UserController::class,'store'])->name('storeuser');
+    Route::post('/delete',[RegisteredUserController::class,'destroy'])->name('destroy');
     
  });
  require __DIR__.'/auth.php';

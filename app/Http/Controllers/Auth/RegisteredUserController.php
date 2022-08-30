@@ -71,12 +71,17 @@ class RegisteredUserController extends Controller
             'role_id'=> $request->role_id,
         ]);
 
-        event(new Registered($user));
-
-        Auth::login($user);
-
-        return redirect('/');
+        return redirect()->route('users');
         
     }
+
+    public function destroy(User $user)
+    {
+        // $this->authorize('delete', $post);
+        $user->delete();
+        return redirect()->route('users');
+
+    }
+
     
 }

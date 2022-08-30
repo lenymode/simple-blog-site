@@ -8,9 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-    protected $guarded = ['id'];
-    public function roles()
+    protected $fillable = ['name','short','text','images'];
+
+    public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

@@ -9,17 +9,17 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto py-4 py-lg-0">
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('contact')}}">Contact</a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('about')}}">About</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('contact') }}">Contact</a>
+                </li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('about') }}">About</a></li>
 
-                @can('isAdmin')
-                    {{-- @if (Auth::user() && Auth::user()->role_id == '1') --}}
-                    {{-- @if (Auth::check()) --}}
+                @can('blog_create')
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('users') }}">Users</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('createblog')}}">Create Blog</a></li>
-                    {{-- @endif --}}
-                    {{-- @endif --}}
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('createblog') }}">Create
+                            Blog</a></li>
                 @endcan
+
+
 
                 @if (Auth::guest())
                     <li class="nav-item dropdown ms-auto"> <a class="nav-link px-lg-3 py-3 py-lg-4" href="#"

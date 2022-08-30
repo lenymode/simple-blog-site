@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
+
 class UserController extends Controller
 {
     
@@ -38,10 +39,11 @@ class UserController extends Controller
         
     }
 
-    public function createuser()
+    public function createuser(Role $roles)
     {
-       $roles=Role::all();
+
         return view('front.createuser',compact('roles'));
+        
     }
    
 }

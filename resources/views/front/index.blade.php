@@ -9,7 +9,7 @@
 
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success alert-block">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <button type="button" class="close" data-dismiss="alert">×</button>s
                         <strong>{{ $message }}</strong>
                     </div>
                     {{-- <img src="images/{{ Session::get('image') }}"> --}}
@@ -25,12 +25,13 @@
                         <a href="{{ route('blog', $post->id) }}">
                             <h2 class="post-title">{{ $post->name }}</h2>
                             <h3 class="post-subtitle">{{ $post->short }}</h3>
+                           
                         </a>
 
 
                         <p class="post-meta">
                             Posted by
-                            <a href="#!">Mr.Kasem</a>
+                            {{-- <a href="#!">{{ auth()->user()->name }}</a> --}}
                             on September 24, 2022
                         </p>
                     @endforeach

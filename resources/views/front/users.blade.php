@@ -28,9 +28,13 @@
                         <td class="bg-purple-600">{{ $user->email }}</td>
                         <td class="bg-purple-600">{{ $user->role->role }}</td>
                         <td class="small-auto">
-                            <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
-                            <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                            <div class="container flex-auto"> 
+                                <form method="POST" class="small-auto" action="{{route('destroy')}}">  
+                                    @csrf
+                                    
+                                    <button type="submit" class="btn btn-danger">Delete</button></form>
+                              </div>
+                           
                         </td>
                     </tr>
                 @endforeach

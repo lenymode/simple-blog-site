@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -58,7 +59,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
-    Route::post('register', [RegisteredUserController::class, 'store']);
+    Route::get('createuser', [UserController::class, 'createuser'])->name('createuser');
 
     Route::post('registernew', [RegisteredUserController::class, 'storenew'])->name('registernew');
 });

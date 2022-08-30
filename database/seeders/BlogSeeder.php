@@ -25,6 +25,7 @@ class BlogSeeder extends Seeder
             'name' => 'Title',
             'short' => 'Short Description',
             'text' => 'This is the details',
+            'image'=> 'this is image'
         ]);
        
     }
