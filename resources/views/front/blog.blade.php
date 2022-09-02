@@ -9,8 +9,6 @@
                     <h2 class="post-title">{{ $posts->name }}</h2>
                     <h3 class="post-subtitle">{{ $posts->short }}</h3>
                     <p>{{ $posts->text }}</p>
-
-
                 </div>
             </div>
     </main>

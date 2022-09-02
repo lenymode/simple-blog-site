@@ -33,23 +33,30 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 
 // blade-front-end 
     Route::get('/', [PageController::class,'index']);
-    Route::get('/', [PageController::class,'index'])->middleware(['auth'])->name('/');
+    Route::get('/', [PageController::class,'index'])->name('/');
     Route::get('/about',[PageController::class,'about'])->name('about');
     Route::get('/contact',[PageController::class,'contact'])->name('contact');
     Route::get('/blog/{id}',[PageController::class,'blog'])->name('blog');
 
 
-Route::group(["middleware" => ["auth"]], function(){
+Route::group(["middleware" => ['auth']], function(){
+
+
+    Route::group(["middleware" => ['IsAdmin']], function(){
+        Route::get('/users', [PageController::class,'users'])->name('users');
+        Route::get('/createuser', [UserController::class,'createuser'])->name('createuser');
+        Route::post('/storeuser', [UserController::class,'store'])->name('storeuser');
+        Route::post('/delete',[RegisteredUserController::class,'destroy'])->name('destroy');
+
+    });
     // page-controller-routes
    
-    Route::get('/users', [PageController::class,'users'])->name('users');
-    // post-controller-routes 
+  
+    // POST-vlog-controller-routes 
     Route::get('/createblog', [PostController::class,'create'])->name('createblog');
     Route::post('/storeblog', [PostController::class,'store'])->name('storeblog');
     // user-controller-routes
-    Route::get('/createuser', [UserController::class,'createuser'])->name('createuser');
-    Route::post('/storeuser', [UserController::class,'store'])->name('storeuser');
-    Route::post('/delete',[RegisteredUserController::class,'destroy'])->name('destroy');
+    
     
  });
  require __DIR__.'/auth.php';

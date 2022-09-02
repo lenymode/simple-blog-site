@@ -27,8 +27,6 @@
                             <h3 class="post-subtitle">{{ $post->short }}</h3>
                            
                         </a>
-
-
                         <p class="post-meta">
                             Posted by
                             {{-- <a href="#!">{{ auth()->user()->name }}</a> --}}

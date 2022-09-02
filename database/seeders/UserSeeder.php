@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Post;
+
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Support\Facades\Hash;
@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
             'role_id' => $adminRole->id,
             'name' => 'Admin',
             'email' => 'admin@mail.com',
+            'is_admin' =>'1',
             'password' => Hash::make('password'),
         ]);
         // Create user

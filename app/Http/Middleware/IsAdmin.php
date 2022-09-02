@@ -4,8 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class IsAdminMiddlware
+class IsAdmin
 {
     /**
      * Handle an incoming request.
@@ -16,10 +17,12 @@ class IsAdminMiddlware
      */
     public function handle(Request $request, Closure $next)
     {
-            if(!auth()->user()->is_admin){
-                abort(403);
-            }
+       
+        if (Auth::user() &&  Auth::user()->is_admin == 1) {
+            return $next($request);
+       }
 
-        return $next($request);
+       return redirect('/')->with('error','You are not authorized for this action');
+   
     }
 }
