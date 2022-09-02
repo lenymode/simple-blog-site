@@ -85,6 +85,7 @@
                                 <div class="float-end mt-2 pt-1">
                                     <button type="button" class="btn btn-primary btn-sm">Post comment</button>
                                     <button type="button" class="btn btn-outline-primary btn-sm">Cancel</button>
+                                    
                                 </div>
                             </a>
                             @endauth
